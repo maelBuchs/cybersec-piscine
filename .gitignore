@@ -1,6 +1,7 @@
 # Virtualenv
 env/
 venv/
+data/
 
 # Compiled Python files
 __pycache__/
