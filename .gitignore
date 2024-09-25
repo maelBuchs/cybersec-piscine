@@ -2,6 +2,7 @@
 env/
 venv/
 data/
+exif-samples/
 
 # Compiled Python files
 __pycache__/
