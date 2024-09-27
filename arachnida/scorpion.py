@@ -2,6 +2,10 @@ from PIL import Image, ExifTags
 import sys
 from pathlib import Path
 
+class colors:
+    RED = '\033[91m'
+    DEFAULT = '\033[0m'
+
 def printPerms():
     perms = oct(Path(sys.argv[1]).stat().st_mode)[-3:]
     rwx_mapping = {
@@ -43,7 +47,15 @@ def printInfo():
         if tag in ExifTags.TAGS:
             print(ExifTags.TAGS[tag] + " : " + str(value))
 
+def checkFileName():
+    file = sys.argv[1]
+    if file.endswith(".jpg") or file.endswith(".jpeg") or file.endswith(".gif") or file.endswith(".bmp") or file.endswith(".png"):
+        return
+    print(colors.RED + "Error: " + colors.DEFAULT + "File has an invalid type (JPG/JPEG/GIF/BMP)")
+    exit(1)
+
 def main():
+    checkFileName()
     printInfo()
 if __name__ == "__main__":
     main()
